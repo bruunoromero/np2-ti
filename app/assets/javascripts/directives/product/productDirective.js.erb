@@ -1,0 +1,12 @@
+angular.module('app').directive('product', function () {
+	return {
+		replace: true,
+		restrict: 'E',
+		templateUrl: "<%= asset_path './productDirective.html' %>",
+		transclude: true,
+		scope: {
+			product: '=',
+			tracks: '='
+		}
+	}
+})

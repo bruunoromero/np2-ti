@@ -1,0 +1,71 @@
+.section
+	height: auto
+	overflow: hidden
+	&:not(:last-child)
+		margin-bottom: 30px
+
+.header
+	display: block
+	cursor: pointer
+	font-size: 15px
+	padding: 0 0 5px 0
+	margin: 0 0 10px 0
+	width: 90%
+	height: auto
+	&:hover
+		color: black
+
+.full
+	width: 100%
+
+.text-highlight
+	color: $black !important
+	font-weight: bold
+
+.header-separator
+	padding-top: 15px
+	border-bottom: 1px solid $light-gray
+
+.header-md
+	font-size: 18px
+
+.header-lg
+	font-size: 23px
+
+.black-link, .black-link a
+	color: $black
+	&:visited, &:active
+		color: $black
+	&:hover
+		color: black
+		text-decoration: underline
+
+.text-muted, a.text-muted, .text-muted a
+	color: $gray
+	&:hover
+		color: darken($gray, 10%)
+
+.dot-separator:before
+	content: " · "
+
+.text-link:hover
+	text-decoration: underline
+
+.share-button, .share-button img
+	width: 48px
+	height: 48px
+	cursor: pointer
+	&:not(:last-child)
+		margin-right: 15px
+
+.banner
+	margin-bottom: 50px
+
+.no-padding
+	padding: 0 !important
+
+.no-margin
+	margin: 0 !important
+
+.no-padding-right
+	padding-right: 0 !important

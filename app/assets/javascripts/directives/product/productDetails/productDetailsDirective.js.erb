@@ -1,0 +1,11 @@
+angular.module("app").directive("productDetails", function() {
+  return {
+    replace: true,
+    restrict: "E",
+    templateUrl: "<%= asset_path './productDetailsDirective.html' %>",
+    transclude: true,
+    scope: {
+      product: "="
+    }
+  };
+});

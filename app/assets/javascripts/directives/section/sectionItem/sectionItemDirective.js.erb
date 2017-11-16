@@ -1,0 +1,14 @@
+angular.module('app').directive('sectionItem', function () {
+	return {
+		replace: true,
+		restrict: 'E',
+		templateUrl: "<%= asset_path './sectionItemDirective.html' %>",
+		scope: {
+			id: "=",
+			header: "=",
+			artist: "=",
+			price: "=",
+			image: "="
+		}
+	}
+})

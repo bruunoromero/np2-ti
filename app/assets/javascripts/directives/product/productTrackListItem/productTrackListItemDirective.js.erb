@@ -1,0 +1,11 @@
+angular.module('app').directive('productTracksListItem', function () {
+	return {
+		replace: true,
+		restrict: 'E',
+		templateUrl: "<%= asset_path './productTrackListItemDirective.html' %>",
+		scope: {
+			title: '=',
+			time: '='
+		}
+	}
+})

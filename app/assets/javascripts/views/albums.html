@@ -1,0 +1,20 @@
+<product product="product" tracks="splittedTracks"></product>
+<div class="col-md-12 no-padding">
+	<section 
+		ng-repeat="section in sections"
+		header="section.title"
+		seemore="false"
+		title="{{section.title}}"
+	>
+		<section-item
+			ng-repeat="album in section.albums track by $index"
+			id="album.id"
+			header="album.title"
+			artist="album.artist"
+			price="album.price"
+			image="album.imageUrl"
+			title="{{album.title}}"
+		>
+		</section-item>
+	</section>
+</div>

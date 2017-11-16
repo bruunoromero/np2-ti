@@ -1,0 +1,46 @@
+angular.module("app").config(function($routeProvider, $locationProvider) {
+  $routeProvider.when("/", {
+    controller: "HomeController",
+    templateUrl: "<%= asset_path './views/index.html' %>",
+    resolve: {
+      sections: function(AlbumsAPI) {
+        return AlbumsAPI.getSections();
+      }
+    }
+  });
+
+  $routeProvider.when("/albums/:id", {
+    controller: "AlbumsController",
+    templateUrl: "<%= asset_path './views/albums.html' %>",
+    resolve: {
+      product: [
+        "$route",
+        "AlbumsAPI",
+        function($route, AlbumsAPI) {
+          return AlbumsAPI.findById($route.current.params.id);
+        }
+      ],
+      tracks: [
+        "$route",
+        "AlbumsAPI",
+        function($route, AlbumsAPI) {
+          return AlbumsAPI.findAlbumSongsById($route.current.params.id);
+        }
+      ],
+      sections: function(AlbumsAPI) {
+        return AlbumsAPI.getRelatedSections();
+      }
+    }
+  });
+
+  $routeProvider.when("/sessions", {
+    controller: "SessionsController",
+    templateUrl: "<%= asset_path './views/sessions.html' %>"
+  });
+
+  $routeProvider.otherwise({
+    redirectTo: "/"
+  });
+
+  $locationProvider.html5Mode(true);
+});

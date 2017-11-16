@@ -1,0 +1,177 @@
+
+/* MEDIUM SCREEN */
+@media screen and (max-width: 1270px)
+	.container:not(.main):not(.page-content)
+		margin: auto
+		width: 100%
+
+	.album-section
+		width: 16.8%
+		&:not(:last-child)
+			margin-right: 4%
+
+	.carousel-caption
+		width: 60%
+		left: 20%
+
+/* SMALL SCREEN */
+@media screen and (max-width: 1081px)
+	.carousel-caption
+		width: 70%
+		left: 15%
+
+	.main
+		width: 100%
+		padding: 0 8%
+
+	.sidebar
+		display: none
+
+	.navbar-best-seller, .navbar-favorites
+		display: block !important
+	
+	.nav.navbar-nav li a
+			padding-right: 10px !important
+			padding-left: 10px !important
+
+/* TABLET */
+@media screen and (max-width: 991px)
+	.carousel-caption
+		width: 75%
+		left: 12.5%
+
+	.album-section
+		display: inline-block
+		width: 16.2%
+	
+	.product-tracks .product-tracks-list:not(:last-child)
+		.product-tracks-list-item
+			border-right: 1px solid #ddd
+			&:last-child
+				border-bottom: none
+		ul
+			margin-bottom: 0
+
+	.album-artist
+		display: block
+		width: 100%
+
+	.album-price
+		width: 100%
+		display: block
+		float: left !important
+
+	.thumbnail-header
+		a
+			text-align: left
+
+
+@media screen and (max-width: 851px)
+	.carousel-caption
+		width: 85%
+		left: 7.5%
+
+	.navbar-form
+		width: 200px
+		.input-group
+			width: 100%
+			.form-control
+				width: 100%
+
+/* MOBILE LARGE */
+@media screen and (max-width: 769px)
+	.button-collapsed
+		display: inline-block
+
+	.button-navbar-full
+		display: none
+	
+	.section:not(:last-child)
+		margin-bottom: 40px
+
+	.carousel-inner
+		height: 250px
+		.item
+			height: 250px
+		.item, img
+			width: 100%
+			margin: 0
+		> .item > img
+			height: 250px
+
+	.carousel-indicators
+		display: none
+
+	.carousel-caption
+		top: 20%
+		height: 60%
+		width: 90%
+		left: 5%
+
+	.featured-thumbnail, .featured-thumbnail img
+		height: 150px
+		width: 240px
+
+	.album-section
+		width: 21.2%
+		margin-right: 3.5%
+		&:last-child
+			display: none
+		&:nth-child(4)
+			margin-right: 0
+
+	.navbar-form
+		display: none
+
+	.dropdown .black-link
+		display: inline !important
+
+
+/* MOBILE */
+@media screen and (max-width: 551px)
+	.main
+		padding: 0
+
+	.section:not(:last-child)
+		margin-bottom: 20px
+
+	.featured-thumbnail, .featured-thumbnail img
+		height: 150px
+		width: 220px
+		display: block
+		float: none !important
+
+	.featured-detail
+		display: block
+		float: none !important
+
+	.featured-detail-title, .featured-detail-subtitle
+		margin-left: 0
+
+	.carousel-caption
+		width: 100%
+		left: 0%
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+
+	.album-section
+		&:nth-child(4)
+			display: none
+
+	.album-section:not(:last-child)
+		width: 30%
+		margin-right: 3.6%
+		&:nth-child(3)
+			margin: 0
+
+/* MOBILE SMALL */
+@media screen and (max-width: 376px)
+		.main
+			padding: 0
+		.album-section:not(:last-child)
+			width: 31%
+			margin-right: 4.5px
+			&:nth-child(4)
+				margin-right: 0

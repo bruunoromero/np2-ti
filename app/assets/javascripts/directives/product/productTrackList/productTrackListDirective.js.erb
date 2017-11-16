@@ -1,0 +1,10 @@
+angular.module("app").directive("productTrackList", function() {
+  return {
+    replace: true,
+    restrict: "E",
+    templateUrl: "<%= asset_path './productTrackListDirective.html' %>",
+    scope: {
+      tracks: "="
+    }
+  };
+});

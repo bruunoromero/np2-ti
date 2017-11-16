@@ -1,0 +1,15 @@
+<navbar></navbar>
+<caroussel ng-if='isIndex()'></caroussel>
+<div class="container page-content">
+    <sidebar ng-if="shouldShowSidebar()">
+        <sidebar-list ng-repeat="sidebarSection in sidebarSections" header="sidebarSection.title" header="{{sidebarSection.title}}">
+            <sidebar-list-item ng-repeat="album in sidebarSection.albums track by $index" id="album.id" album="album.title" artist="album.artist"
+                price="album.price" image="album.imageUrl" title="{{album.title}}">
+            </sidebar-list-item>
+        </sidebar-list>
+    </sidebar>
+    <div ng-class="shoudlShowSidebar() ? 'col-md-9' : 'col-md-12'" class="col-md-9 main">
+        <div ng-view></div>
+    </div>
+</div>
+<page-footer></page-footer>

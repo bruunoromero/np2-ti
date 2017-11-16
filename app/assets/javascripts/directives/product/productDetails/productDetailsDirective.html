@@ -1,0 +1,21 @@
+<div>
+	<div class="col-md-5 no-padding">
+		<a href="#" class="thumbnail">
+			<img ng-src="{{::product.imageUrl}}" class="product-image" alt="...">
+		</a>
+	</div>
+	<div class="col-md-7 no-padding-right">
+		<form ng-submit="$event.preventDefault()">
+			<span class="header header-lg no-margin product-name">{{::product.title}}</span>
+			<!-- <span class="header text-muted no-margin">Drake</span> -->
+			<span class="header product-price">{{::product.price | currency}}</span>
+			<div class="product-details">
+				<p class="text-muted">
+					<span class="text-highlight">{{::product.detailsHeader}}: </span>{{::product.details}}</p>
+			</div>
+			<button class="btn btn-success btn-block btn-fat">
+				<i class="glyphicon glyphicon-shopping-cart"></i>Buy</button>
+		</form>
+		<share></share>
+	</div>
+</div>

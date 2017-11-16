@@ -1,0 +1,7 @@
+angular.module("app").directive("pageFooter", function() {
+  return {
+    replace: true,
+    restrict: "E",
+    templateUrl: "<%= asset_path './footerDirective.html' %>"
+  };
+});

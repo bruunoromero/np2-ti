@@ -1,0 +1,13 @@
+<div class="product">
+	<div class="col-md-12 no-padding product-header">
+		<product-details product="product"></product-details>
+	</div>
+	<div class="col-md-12 no-padding product-tracks">
+		<span class="header header-md">Tracking list</span>
+		<product-track-list 
+			ng-repeat="songs in tracks track by $index"
+			tracks="songs"
+		>
+		</product-track-list>
+	</div>
+</div>

@@ -1,0 +1,110 @@
+<nav class="navbar navbar-default">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+			 aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<button type="button" class="btn btn-success navbar-btn pull-right button-collapsed">
+				<i class="glyphicon glyphicon-shopping-cart no-margin"></i>
+			</button>
+			<a class="navbar-brand" href="/index">Ti Sound</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">Classic</a>
+						</li>
+						<li>
+							<a href="#">Dance</a>
+						</li>
+						<li>
+							<a href="#">Eletronic</a>
+						</li>
+						<li>
+							<a href="#">Hip Hop</a>
+						</li>
+						<li>
+							<a href="#">House</a>
+						</li>
+						<li>
+							<a href="#">Indie</a>
+						</li>
+						<li>
+							<a href="#">Metal</a>
+						</li>
+						<li>
+							<a href="#">Pop</a>
+						</li>
+						<li>
+							<a href="#">Rock</a>
+						</li>
+						<li>
+							<a href="#">Trance</a>
+						</li>
+					</ul>
+				</li>
+				<li class="navbar-best-seller">
+					<a href="#">Best Sellers</a>
+				</li>
+				<li class="navbar-favorites">
+					<a href="#">Our Favorites</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<button type="button" class="btn btn-success navbar-btn button-navbar-full">
+						<i class="glyphicon glyphicon-shopping-cart"></i>Cart</button>
+				</li>
+				<li class="dropdown" ng-if="user.username">
+					<a href="#" class="dropdown-toggle navbar-avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						brunoromero
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">
+								<i class="glyphicon glyphicon-cog"></i>Settings</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="glyphicon glyphicon-option-horizontal"></i>Change Password</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="#">
+								<i class="glyphicon glyphicon-log-out"></i>Logout</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-if="!user.username">
+					<a href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						Entrar
+					</a>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+				</div>
+			</form>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>

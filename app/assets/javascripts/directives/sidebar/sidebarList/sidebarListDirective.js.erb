@@ -1,0 +1,11 @@
+angular.module("app").directive("sidebarList", function() {
+  return {
+    replace: true,
+    restrict: "E",
+    templateUrl: "<%= asset_path './sidebarListDirective.html' %>",
+    transclude: true,
+    scope: {
+      header: "="
+    }
+  };
+});

@@ -1,0 +1,12 @@
+angular.module('app').directive('section', function () {
+	return {
+		replace: true,
+		restrict: 'E',
+		templateUrl: "<%= asset_path './sectionDirective.html' %>",
+		transclude: true,
+		scope: {
+			header: '=',
+			seemore: '='
+		}
+	}
+})

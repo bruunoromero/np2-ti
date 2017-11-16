@@ -1,0 +1,16 @@
+<div class="col-md-2 album-section">
+  <div class="thumbnail">
+    <a href="/albums/{{::id}}">
+      <img ng-src="{{::image}}" alt="{{::header}}">
+    </a>
+    <div class="caption">
+      <div class="thumbnail-header">
+        <a href="/albums/{{::id}}" title="{{::header}}" class="black-link">{{::header}}</a>
+      </div>
+      <div>
+        <a href="" class="text-muted pull-left album-artist" title="{{::artist}}">{{::artist | ellipsis: 8}}</a>
+        <a href="" class="text-muted pull-right album-price">{{::price | currency}}</a>
+      </div>
+    </div>
+  </div>
+</div>

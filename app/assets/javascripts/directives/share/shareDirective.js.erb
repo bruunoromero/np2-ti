@@ -1,0 +1,7 @@
+angular.module("app").directive("share", function() {
+  return {
+    replace: true,
+    restrict: "E",
+    templateUrl: "<%= asset_path './shareDirective.html' %>"
+  };
+});
