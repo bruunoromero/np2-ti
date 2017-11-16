@@ -21,7 +21,6 @@ angular.module("app").factory("AlbumsAPI", function() {
     { title: "21", artist: "Adele" },
     { title: "ANTi", artist: "Rihanna" },
     { title: "Views", artist: "Drake" },
-    { title: "7/27", artist: "Fifth Harmony" },
     { title: "24K Magic", artist: "Bruno Mars" },
     { title: "Handwritten", artist: "Shawn Mendes" },
     { title: "us", artist: "Gnash" },

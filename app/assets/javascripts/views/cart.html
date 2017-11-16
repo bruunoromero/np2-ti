@@ -1,0 +1,58 @@
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Cart</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-responsive table-striped">
+            <thead>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Qunatity</th>
+                <th>Subtotal</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products">
+                    <td>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" ng-src="{{product.imageUrl}}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{product.title}}</h4>
+                                <h5 class="media-heading text-muted">{{product.artist}}</h5>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <h5>{{product.price | currency}}</h5>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number," ng-model="product.quantity" min="1">
+                    </td>
+                    <td>
+                        <h5>{{product.quantity * product.price | currency}}</h5>
+                    </td>
+                    <td>
+                        <button class="btn btn-link" style="color: #DC0004" ng-click="remove(product.id)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <button class="btn btn-success" ng-click="buy()">
+                        <i class="glyphicon glyphicon-ok"></i> Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

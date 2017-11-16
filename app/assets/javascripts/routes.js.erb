@@ -38,6 +38,11 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     templateUrl: "<%= asset_path './views/sessions.html' %>"
   });
 
+  $routeProvider.when("/cart", {
+    controller: "CartController",
+    templateUrl: "<%= asset_path './views/cart.html' %>"
+  });
+
   $routeProvider.otherwise({
     redirectTo: "/"
   });
