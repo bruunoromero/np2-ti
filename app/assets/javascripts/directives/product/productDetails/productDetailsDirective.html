@@ -7,11 +7,16 @@
 	<div class="col-md-7 no-padding-right">
 		<form ng-submit="$event.preventDefault()">
 			<span class="header header-lg no-margin product-name">{{::product.title}}</span>
-			<!-- <span class="header text-muted no-margin">Drake</span> -->
 			<span class="header product-price">{{::product.price | currency}}</span>
 			<div class="product-details">
 				<p class="text-muted">
-					<span class="text-highlight">{{::product.detailsHeader}}: </span>{{::product.details}}</p>
+					<span class="text-highlight">Descrição: </span>
+					Está autorizada a cópia, distribuição e a modificação deste documento segundo os termos da licença de documentação livre
+					GNU, versão 1.2 ou qualquer outra que posteriormente seja publicada pela Fundação de Software Livre (Free Software Foundation);
+					sem secções invariáveis (Unvariant Sections), textos de abertura (Front-Cover Texts), nem textos de conclusão (Back-Cover
+					Texts).
+
+				</p>
 			</div>
 			<button class="btn btn-success btn-block btn-fat">
 				<i class="glyphicon glyphicon-shopping-cart"></i>Add to cart</button>

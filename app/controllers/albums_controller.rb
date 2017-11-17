@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     end
 
     def show
-        render json: @album
+        render json: @album, include: :tracks
     end
 
     private

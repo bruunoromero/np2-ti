@@ -16,10 +16,11 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: "AlbumsController",
     templateUrl: "<%= asset_path './views/albums.html' %>",
     resolve: {
-      album: [
+      product: [
         "AlbumsAPI",
-        function(AlbumsAPI) {
-          return AlbumsAPI.getRelatedSections();
+        "$route",
+        function(AlbumsAPI, $route) {
+          return AlbumsAPI.getAlbum($route.current.params.id);
         }
       ]
     }

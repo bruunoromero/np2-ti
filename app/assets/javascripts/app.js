@@ -4,6 +4,12 @@ angular.module("app", ["ngRoute"]).run([
   function($rootScope, $location) {
     $rootScope.location = $location;
 
+    if (!$rootScope.sidebarSections) {
+      var sections = localStorage.getItem("sections");
+      if (!sections) return;
+      $rootScope.sidebarSections = JSON.parse(sections);
+    }
+
     $rootScope.user = {};
 
     $rootScope.cart = [];
