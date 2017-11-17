@@ -1,17 +1,5 @@
-<section 
-	ng-repeat="section in sections"
-	header="section.title"
-	title="{{section.title}}"
-	seemore="true"
->
-	<section-item 
-		ng-repeat="album in section.albums track by $index"
-		id="album.id"
-		header="album.title"
-		artist="album.artist"
-		price="album.price"
-		image="album.imageUrl"
-		title="{{album.title}}"
-	>
+<section ng-repeat="section in sections" header="section.title" title="{{section.title}}" seemore="true">
+	<section-item ng-repeat="album in section.albums track by $index" id="album.id" header="album.title" artist="album.artist"
+	 price="album.price" title="{{album.title}}">
 	</section-item>
 </section>

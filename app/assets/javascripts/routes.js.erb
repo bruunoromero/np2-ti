@@ -3,9 +3,12 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: "HomeController",
     templateUrl: "<%= asset_path './views/index.html' %>",
     resolve: {
-      sections: function(AlbumsAPI) {
-        return AlbumsAPI.getSections();
-      }
+      sections: [
+        "AlbumsAPI",
+        function(AlbumsAPI) {
+          return AlbumsAPI.getSections();
+        }
+      ]
     }
   });
 
@@ -13,23 +16,12 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: "AlbumsController",
     templateUrl: "<%= asset_path './views/albums.html' %>",
     resolve: {
-      product: [
-        "$route",
+      album: [
         "AlbumsAPI",
-        function($route, AlbumsAPI) {
-          return AlbumsAPI.findById($route.current.params.id);
+        function(AlbumsAPI) {
+          return AlbumsAPI.getRelatedSections();
         }
-      ],
-      tracks: [
-        "$route",
-        "AlbumsAPI",
-        function($route, AlbumsAPI) {
-          return AlbumsAPI.findAlbumSongsById($route.current.params.id);
-        }
-      ],
-      sections: function(AlbumsAPI) {
-        return AlbumsAPI.getRelatedSections();
-      }
+      ]
     }
   });
 

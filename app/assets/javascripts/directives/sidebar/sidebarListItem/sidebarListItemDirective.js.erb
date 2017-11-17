@@ -7,8 +7,21 @@ angular.module("app").directive("sidebarListItem", function() {
       id: "=",
       album: "=",
       artist: "=",
-      price: "=",
-      image: "="
-    }
+      price: "="
+    },
+    controller: [
+      "$scope",
+      function($scope) {
+        $scope.getImageName = function(name) {
+          var res = name.toLowerCase();
+          res = res.replace(/\s/g, "_").replace("/", ":");
+          if (res === "purpose") {
+            res += "_square";
+          }
+
+          return "/images/" + res + ".jpg";
+        };
+      }
+    ]
   };
 });

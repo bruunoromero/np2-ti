@@ -1,8 +1,7 @@
 angular.module("app", ["ngRoute"]).run([
   "$rootScope",
   "$location",
-  "AlbumsAPI",
-  function($rootScope, $location, AlbumsAPI) {
+  function($rootScope, $location) {
     $rootScope.location = $location;
 
     $rootScope.user = {};
@@ -16,8 +15,6 @@ angular.module("app", ["ngRoute"]).run([
     $rootScope.shouldShowSidebar = function() {
       return $location.path() === "/" || $location.path().startsWith("/albums");
     };
-
-    $rootScope.sidebarSections = AlbumsAPI.getSidebarSections();
   }
 ]);
 

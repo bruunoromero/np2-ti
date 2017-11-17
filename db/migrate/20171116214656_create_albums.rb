@@ -3,7 +3,7 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
     create_table :albums do |t|
       t.string :title
       t.string :artist
-      t.double :price
+      t.decimal :price
 
       t.timestamps
     end
