@@ -30,13 +30,13 @@
                         <h5>{{product.price | currency}}</h5>
                     </td>
                     <td>
-                        <input class="form-control" type="number," ng-model="product.quantity" min="1">
+                        <input class="form-control" type="number," ng-model="product.quantity" ng-change="updateQuantity(product)" ng-model-options="{debounce: 500}">
                     </td>
                     <td>
                         <h5>{{product.quantity * product.price | currency}}</h5>
                     </td>
                     <td>
-                        <button class="btn btn-link" style="color: #DC0004" ng-click="remove(product.id)">
+                        <button class="btn btn-link" style="color: #DC0004" ng-click="remove(product)">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
                     </td>

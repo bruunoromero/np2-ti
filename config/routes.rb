@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post '/users/login', to: 'users#login'
     post '/users/register', to: 'users#register'
     post '/users/add_to_cart', to: 'users#add_to_cart'
+    post '/users/remove_product', to: 'users#remove_product'
+    put '/users/set_product_quantity', to: 'users#set_product_quantity'
   end
 
   get '*path', to: 'home#index'

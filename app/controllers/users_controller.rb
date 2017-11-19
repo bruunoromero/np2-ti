@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:login, :add_to_cart]
-    before_action :validate_user, only: [:login, :add_to_cart]
+    before_action :set_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product]
+    before_action :validate_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product]
     before_action :sync_cart, only: [:login]
 
     def login
@@ -52,12 +52,36 @@ class UsersController < ApplicationController
         end
     end
 
+    def set_product_quantity
+        unless params[:order_id].nil?
+            order = @user.open_order.order_items.find params[:order_id]
+            unless order.update quantity: params[:quantity]
+                raise 'could not update quantity'
+            end
+        else
+            raise 'product not found'
+        end
+    end
+
+    def remove_product
+        unless params[:order_id].nil?
+            order = @user.open_order.order_items.find params[:order_id]
+            unless order.destroy
+                raise 'could not delete product'
+            end
+        else
+            raise 'product not found'
+        end
+    end
+
     private
     def set_user
+        puts 1
         @user = User.find_by email: params[:email]
     end
 
     def validate_user
+        puts 2
         if @user.nil?
             raise 'permission denied'
         end

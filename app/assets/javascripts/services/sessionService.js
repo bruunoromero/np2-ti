@@ -20,6 +20,7 @@ angular.module("app").service("SessionAPI", [
         var album = item.album;
         album.quantity = item.quantity;
         album.imageUrl = getImageName(album.title);
+        album.orderId = item.id;
         c[album.id] = album;
       });
       return c;
@@ -73,6 +74,7 @@ angular.module("app").service("SessionAPI", [
     };
 
     this.addToCart = function(album) {
+      var self = this;
       var albumInCart = this.getCart()[album.id];
       var success = function() {
         if (albumInCart) {
@@ -80,7 +82,7 @@ angular.module("app").service("SessionAPI", [
         } else {
           var newAlbum = angular.copy(album);
           newAlbum.quantity = 1;
-          cart[album.id] = newAlbum;
+          self.getCart()[album.id] = newAlbum;
         }
       };
 
@@ -102,14 +104,59 @@ angular.module("app").service("SessionAPI", [
       }
     };
 
-    this.setQuantity = function(album, qtd) {
+    this.setQuantity = function(album) {
+      var self = this;
       var albumInCart = this.getCart()[album.id];
-      if (albumInCart) {
-        albumInCart.quantity = qtd;
+      var success = function() {
+        if (albumInCart) {
+          albumInCart.quantity = album.quantity;
+        } else {
+          var newAlbum = angular.copy(album);
+          newAlbum.quantity = album.quantity;
+          self.getCart()[album.id] = newAlbum;
+        }
+      };
+
+      if (currentUser && currentUser.email) {
+        $http
+          .put("/api/users/set_product_quantity", {
+            order_id: album.orderId,
+            email: currentUser.email,
+            quantity: album.quantity,
+            password: currentUser.password
+          })
+          .then(function() {
+            success();
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       } else {
-        var newAlbum = angular.copy(album);
-        newAlbum.quantity = qtd;
-        cart[album.id] = newAlbum;
+        success();
+      }
+    };
+
+    this.remove = function(album) {
+      var self = this;
+      var success = function() {
+        delete self.getCart()[album.id];
+      };
+
+      if (currentUser && currentUser.email) {
+        $http
+          .post("/api/users/remove_product", {
+            order_id: album.orderId,
+            email: currentUser.email,
+            password: currentUser.password
+          })
+          .then(function() {
+            success();
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      } else {
+        success();
       }
     };
 
