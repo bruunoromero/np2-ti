@@ -2,6 +2,15 @@ angular.module("app").directive("navbar", function() {
   return {
     replace: true,
     restrict: "E",
-    templateUrl: "<%= asset_path './navbarDirective.html' %>"
+    templateUrl: "<%= asset_path './navbarDirective.html' %>",
+    controller: [
+      "$scope",
+      "SessionAPI",
+      function($scope, SessionAPI) {
+        $scope.user = function() {
+          return SessionAPI.getCurrentUser();
+        };
+      }
+    ]
   };
 });

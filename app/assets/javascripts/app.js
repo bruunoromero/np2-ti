@@ -10,10 +10,6 @@ angular.module("app", ["ngRoute"]).run([
       $rootScope.sidebarSections = JSON.parse(sections);
     }
 
-    $rootScope.user = {};
-
-    $rootScope.cart = [];
-
     $rootScope.isIndex = function() {
       return $location.path() === "/";
     };

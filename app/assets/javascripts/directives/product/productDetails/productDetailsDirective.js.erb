@@ -6,6 +6,16 @@ angular.module("app").directive("productDetails", function() {
     transclude: true,
     scope: {
       product: "="
-    }
+    },
+    controller: [
+      "$scope",
+      "SessionAPI",
+      function($scope, SessionAPI) {
+        $scope.addToCart = function() {
+          SessionAPI.addToCart($scope.product);
+          console.log(SessionAPI.getCart());
+        };
+      }
+    ]
   };
 });

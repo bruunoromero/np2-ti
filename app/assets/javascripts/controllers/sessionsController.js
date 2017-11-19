@@ -9,7 +9,6 @@ angular.module("app").controller("SessionsController", [
     $scope.makeLogin = function(e) {
       if ($scope.loginForm.$valid) {
         SessionAPI.login($scope.login, function(data) {
-          console.log(data);
           $location.path("/");
         });
       }

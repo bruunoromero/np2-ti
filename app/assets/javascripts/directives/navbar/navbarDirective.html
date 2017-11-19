@@ -72,9 +72,9 @@
 						</a>
 					</div>
 				</li>
-				<li class="dropdown" ng-if="user.username">
-					<a href="#" class="dropdown-toggle navbar-avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						brunoromero
+				<li class="dropdown" ng-if="user().email">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{user().email.split('@')[0]}}
 					</a>
 					<ul class="dropdown-menu">
 						<li>
@@ -92,9 +92,9 @@
 						</li>
 					</ul>
 				</li>
-				<li ng-if="!user.username">
+				<li ng-if="!user().email">
 					<a href="/sessions" role="button" aria-haspopup="true" aria-expanded="false">
-						Sign in
+						Sign In
 					</a>
 				</li>
 			</ul>
