@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product]
-    before_action :validate_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product]
+    before_action :validate_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product, :checkout, :add_card]
     before_action :sync_cart, only: [:login]
 
     def login
-        render json: @user, include: { open_order: { include: {order_items: { include: :album } } } }
+        render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } }}, :card]
     end
 
     def register
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
         if password == password_again && !email.nil? && !email.empty?
             @user = User.create(email: email, password: password)
             sync_cart
-            render json: User.find(@user.id), include: { open_order: { include: {order_items: { include: :album } } } }
+            render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } }}, :card]
         elsif
             raise 'passwords not match or your email is empty'
         end
@@ -52,6 +51,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def checkout 
+        unless @user.open_order.update completed: true
+            raise 'could not buy these products'
+        end
+    end
+
     def set_product_quantity
         unless params[:order_id].nil?
             order = @user.open_order.order_items.find params[:order_id]
@@ -74,14 +79,26 @@ class UsersController < ApplicationController
         end
     end
 
+    def add_card
+        owner = params[:owner]
+        number = params[:number]
+        security_code = params[:securityCode]
+
+        card = Card.new owner: owner, number: number, security_code: security_code, user: @user
+        unless card.save
+            raise 'could not create card'
+        else
+            render json: card
+        end
+    end
+
     private
     def set_user
-        puts 1
         @user = User.find_by email: params[:email]
     end
 
     def validate_user
-        puts 2
+        set_user
         if @user.nil?
             raise 'permission denied'
         end

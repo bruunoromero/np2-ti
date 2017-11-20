@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :card
   has_many :orders
   validates :email, uniqueness: true
   has_one :open_order, -> { where completed: false}, class_name: 'Order'

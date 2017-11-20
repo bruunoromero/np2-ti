@@ -160,6 +160,41 @@ angular.module("app").service("SessionAPI", [
       }
     };
 
+    this.checkout = function(success, error) {
+      if (currentUser && currentUser.email) {
+        $http
+          .post("/api/users/checkout", {
+            email: currentUser.email,
+            password: currentUser.password
+          })
+          .then(function() {
+            currentUser.cart = {};
+            success();
+          });
+      } else {
+        error ? error() : null;
+      }
+    };
+
+    this.addCard = function(card, success, error) {
+      $http
+        .post("/api/users/add_card", {
+          owner: card.owner,
+          number: card.number,
+          email: currentUser.email,
+          password: currentUser.password,
+          securityCode: card.securityCode
+        })
+        .then(function(res) {
+          var card = res.data;
+          currentUser.card = card;
+          success ? success(card) : null;
+        })
+        .catch(function(res) {
+          error ? error(res) : console.log(res);
+        });
+    };
+
     this.getCart = function() {
       if (currentUser && currentUser.cart) {
         return currentUser.cart;
