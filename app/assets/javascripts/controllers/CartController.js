@@ -5,9 +5,7 @@ angular.module("app").controller("CartController", [
   function($scope, $location, SessionAPI) {
     $scope.card = {};
 
-    $scope.getProducts = function() {
-      return SessionAPI.getCart();
-    };
+    $scope.products = SessionAPI.getCart();
 
     $scope.updateQuantity = function(product) {
       SessionAPI.setQuantity(product);

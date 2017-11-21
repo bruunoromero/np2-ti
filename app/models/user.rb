@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :orders
   validates :email, uniqueness: true
   has_one :open_order, -> { where completed: false}, class_name: 'Order'
+  has_many :closed_orders, -> { where completed: true}, class_name: 'Order'
 
   def open_order_or_create 
     open_order = self.open_order

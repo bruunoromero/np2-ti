@@ -26,6 +26,11 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     }
   });
 
+  $routeProvider.when("/orders", {
+    controller: "OrdersController",
+    templateUrl: "<%= asset_path './views/orders.html' %>"
+  });
+
   $routeProvider.when("/sessions", {
     controller: "SessionsController",
     templateUrl: "<%= asset_path './views/sessions.html' %>"
@@ -39,6 +44,4 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
   $routeProvider.otherwise({
     redirectTo: "/"
   });
-
-  $locationProvider.html5Mode(true);
 });

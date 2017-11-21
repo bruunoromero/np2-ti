@@ -10,90 +10,86 @@
 				<span class="icon-bar"></span>
 			</button>
 			<div class="navbar-btn pull-right button-collapsed">
-				<a href="/cart" type="button" class="btn btn-success">
+				<a href="#!/cart" type="button" class="btn btn-success">
 					<i class="glyphicon glyphicon-shopping-cart no-margin"></i>
 				</a>
 			</div>
-			<a class="navbar-brand" href="/index">Ti Sound</a>
+			<a class="navbar-brand" href="#!/index">Ti Sound</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="#">Classic</a>
+							<a href="">Classic</a>
 						</li>
 						<li>
-							<a href="#">Dance</a>
+							<a href="">Dance</a>
 						</li>
 						<li>
-							<a href="#">Eletronic</a>
+							<a href="">Eletronic</a>
 						</li>
 						<li>
-							<a href="#">Hip Hop</a>
+							<a href="">Hip Hop</a>
 						</li>
 						<li>
-							<a href="#">House</a>
+							<a href="">House</a>
 						</li>
 						<li>
-							<a href="#">Indie</a>
+							<a href="">Indie</a>
 						</li>
 						<li>
-							<a href="#">Metal</a>
+							<a href="">Metal</a>
 						</li>
 						<li>
-							<a href="#">Pop</a>
+							<a href="">Pop</a>
 						</li>
 						<li>
-							<a href="#">Rock</a>
+							<a href="">Rock</a>
 						</li>
 						<li>
-							<a href="#">Trance</a>
+							<a href="">Trance</a>
 						</li>
 					</ul>
 				</li>
 				<li class="navbar-best-seller">
-					<a href="#">Best Sellers</a>
+					<a href="">Best Sellers</a>
 				</li>
 				<li class="navbar-favorites">
-					<a href="#">Our Favorites</a>
+					<a href="">Our Favorites</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					<div type="button" class="navbar-btn button-navbar-full">
-						<a href="/cart" class="btn btn-success">
+						<a href="#!/cart" class="btn btn-success">
 							<i class="glyphicon glyphicon-shopping-cart"></i>Cart
 						</a>
 					</div>
 				</li>
 				<li class="dropdown" ng-if="user().email">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						{{user().email.split('@')[0]}}
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="#">
-								<i class="glyphicon glyphicon-cog"></i>Settings</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="glyphicon glyphicon-option-horizontal"></i>Change Password</a>
+							<a href="#!/orders">
+								<i class="glyphicon glyphicon-option-horizontal"></i>Orders</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
-							<a href="#">
+							<a href="" ng-click="logoff()">
 								<i class="glyphicon glyphicon-log-out"></i>Logout</a>
 						</li>
 					</ul>
 				</li>
 				<li ng-if="!user().email">
-					<a href="/sessions" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#!/sessions" role="button" aria-haspopup="true" aria-expanded="false">
 						Sign In
 					</a>
 				</li>

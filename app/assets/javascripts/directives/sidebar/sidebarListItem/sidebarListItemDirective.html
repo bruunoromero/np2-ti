@@ -1,17 +1,17 @@
 <div class="sidebar-list-item">
 	<div class="media">
 		<div class="media-left">
-			<a href="/albums/{{::id}}">
+			<a href="#!/albums/{{::id}}">
 				<img class="media-object" ng-src="{{::getImageName(album)}}" alt="">
 			</a>
 		</div>
 		<div class="media-body">
 			<h5 class="media-heading">
-				<a href="/albums/{{::id}}" class="black-link" title="{{::album}}">{{::album}}</a>
+				<a href="#!/albums/{{::id}}" class="black-link" title="{{::album}}">{{::album}}</a>
 				<span class="dot-separator text-muted"></span>
-				<a href="/albums/{{::id}}" class="text-muted" title="{{::artist}}">{{::artist}}</a>
+				<a href="#!/albums/{{::id}}" class="text-muted" title="{{::artist}}">{{::artist}}</a>
 			</h5>
-			<a href="/albums/{{::id}}" class="text-muted">{{::price | currency}}</a>
+			<a href="#!/albums/{{::id}}" class="text-muted">{{::price | currency}}</a>
 		</div>
 	</div>
 </div>

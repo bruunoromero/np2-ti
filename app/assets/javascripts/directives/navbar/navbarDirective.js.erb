@@ -10,6 +10,10 @@ angular.module("app").directive("navbar", function() {
         $scope.user = function() {
           return SessionAPI.getCurrentUser();
         };
+
+        $scope.logoff = function() {
+          SessionAPI.logoff();
+        };
       }
     ]
   };

@@ -12,17 +12,17 @@
                 <th>Delete</th>
             </thead>
             <tbody>
-                <tr ng-repeat="product in getProducts()">
+                <tr ng-repeat="product in products">
                     <td>
                         <div class="media">
                             <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" ng-src="{{product.imageUrl}}">
+                                <a href="">
+                                    <img class="media-object" ng-src="{{::product.imageUrl}}">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading">{{product.title}}</h4>
-                                <h5 class="media-heading text-muted">{{product.artist}}</h5>
+                                <h4 class="media-heading">{{::product.title}}</h4>
+                                <h5 class="media-heading text-muted">{{::product.artist}}</h5>
                             </div>
                         </div>
                     </td>

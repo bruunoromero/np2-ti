@@ -32,6 +32,7 @@ angular.module("app").service("SessionAPI", [
         .then(function(res) {
           currentUser = res.data;
           currentUser.cart = normalizeCart(res.data.open_order.order_items);
+          sessionStorage.setItem("user", JSON.stringify(currentUser));
           success ? success(currentUser) : null;
         })
         .catch(
@@ -55,6 +56,11 @@ angular.module("app").service("SessionAPI", [
       );
     };
 
+    this.logoff = function() {
+      currentUser = null;
+      sessionStorage.removeItem("user");
+    };
+
     this.register = function(user, success, error) {
       session(
         "register",
@@ -69,7 +75,35 @@ angular.module("app").service("SessionAPI", [
       );
     };
 
+    this.orders = function(success) {
+      $http
+        .post("/api/users/orders", {
+          email: currentUser.email,
+          password: currentUser.password
+        })
+        .then(function(res) {
+          var carts = [];
+          angular.forEach(res.data, function(item) {
+            console.log(item);
+            carts.push({
+              date: item.updated_at,
+              cart: normalizeCart(item.order_items)
+            });
+          });
+
+          currentUser.carts = carts;
+          success(carts);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    };
+
     this.getCurrentUser = function() {
+      if (sessionStorage.getItem("user")) {
+        currentUser = JSON.parse(sessionStorage.getItem("user"));
+      }
+
       return currentUser;
     };
 
@@ -95,6 +129,7 @@ angular.module("app").service("SessionAPI", [
           })
           .then(function() {
             success();
+            sessionStorage.setItem("user", JSON.stringify(currentUser));
           })
           .catch(function() {
             console.log("error");
@@ -127,6 +162,7 @@ angular.module("app").service("SessionAPI", [
           })
           .then(function() {
             success();
+            sessionStorage.setItem("user", JSON.stringify(currentUser));
           })
           .catch(function(err) {
             console.log(err);
@@ -151,6 +187,7 @@ angular.module("app").service("SessionAPI", [
           })
           .then(function() {
             success();
+            sessionStorage.setItem("user", JSON.stringify(currentUser));
           })
           .catch(function(err) {
             console.log(err);
@@ -170,6 +207,7 @@ angular.module("app").service("SessionAPI", [
           .then(function() {
             currentUser.cart = {};
             success();
+            sessionStorage.setItem("user", JSON.stringify(currentUser));
           });
       } else {
         error ? error() : null;
@@ -189,6 +227,7 @@ angular.module("app").service("SessionAPI", [
           var card = res.data;
           currentUser.card = card;
           success ? success(card) : null;
+          sessionStorage.setItem("user", JSON.stringify(currentUser));
         })
         .catch(function(res) {
           error ? error(res) : console.log(res);

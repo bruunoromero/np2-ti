@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-    before_action :validate_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product, :checkout, :add_card]
+    before_action :validate_user, only: [:login, :add_to_cart, :set_product_quantity, :remove_product, :checkout, :add_card, :orders]
     before_action :sync_cart, only: [:login]
 
     def login
-        render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } }}, :card]
+        render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } } }, :card]
     end
 
     def register
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         if password == password_again && !email.nil? && !email.empty?
             @user = User.create(email: email, password: password)
             sync_cart
-            render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } }}, :card]
+            render json: User.find(@user.id), include: [ {open_order: { include: {order_items: { include: :album } } } }, :card]
         elsif
             raise 'passwords not match or your email is empty'
         end
@@ -90,6 +90,10 @@ class UsersController < ApplicationController
         else
             render json: card
         end
+    end
+
+    def orders
+        render json: @user.closed_orders, include: { order_items: { include: :album } } 
     end
 
     private

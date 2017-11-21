@@ -1,0 +1,55 @@
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Orders</h3>
+    </div>
+    <div class="panel-body">
+        <div class="panel" ng-repeat="order in orders">
+            <div class="panel-heading" style="padding-bottom: 0">
+                <h4>{{ ::order.date | date }}</h4>
+            </div>
+            <div class="panel-body" style="padding-top: 0">
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Delete</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in order.cart">
+                            <td>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="">
+                                            <img class="media-object" ng-src="{{::product.imageUrl}}">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{::product.title}}</h4>
+                                        <h5 class="media-heading text-muted">{{::product.artist}}</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>{{product.price | currency}}</h5>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number," ng-model="product.quantity" ng-change="updateQuantity(product)" ng-model-options="{debounce: 500}">
+                            </td>
+                            <td>
+                                <h5>{{product.quantity * product.price | currency}}</h5>
+                            </td>
+                            <td>
+                                <button class="btn btn-link" style="color: #DC0004" ng-click="remove(product)">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

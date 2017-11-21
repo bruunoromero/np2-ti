@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :albums, only: [:index, :show]
     post '/users/login', to: 'users#login'
+    post '/users/orders', to: 'users#orders'
     post '/users/register', to: 'users#register'
     post '/users/checkout', to: 'users#checkout'
     post '/users/add_card', to: 'users#add_card'
