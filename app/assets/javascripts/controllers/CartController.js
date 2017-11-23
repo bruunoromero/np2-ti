@@ -25,6 +25,7 @@ angular.module("app").controller("CartController", [
       var card = user.card;
       if (card && card.number) {
         SessionAPI.checkout();
+        $scope.products = [];
       } else {
         $("#modal-card").modal("show");
       }
