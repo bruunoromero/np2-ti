@@ -1,47 +1,51 @@
-angular.module("app").config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  $routeProvider.when("/", {
-    controller: "HomeController",
-    templateUrl: "<%= asset_path './views/index.html' %>",
-    resolve: {
-      sections: [
-        "AlbumsAPI",
-        function(AlbumsAPI) {
-          return AlbumsAPI.getSections();
-        }
-      ]
-    }
-  });
+angular.module("app").config([
+  "$routeProvider",
+  "$locationProvider",
+  function($routeProvider, $locationProvider) {
+    $routeProvider.when("/", {
+      controller: "HomeController",
+      templateUrl: "<%= asset_path './views/index.html' %>",
+      resolve: {
+        sections: [
+          "AlbumsAPI",
+          function(AlbumsAPI) {
+            return AlbumsAPI.getSections();
+          }
+        ]
+      }
+    });
 
-  $routeProvider.when("/albums/:id", {
-    controller: "AlbumsController",
-    templateUrl: "<%= asset_path './views/albums.html' %>",
-    resolve: {
-      product: [
-        "AlbumsAPI",
-        "$route",
-        function(AlbumsAPI, $route) {
-          return AlbumsAPI.getAlbum($route.current.params.id);
-        }
-      ]
-    }
-  });
+    $routeProvider.when("/albums/:id", {
+      controller: "AlbumsController",
+      templateUrl: "<%= asset_path './views/albums.html' %>",
+      resolve: {
+        product: [
+          "AlbumsAPI",
+          "$route",
+          function(AlbumsAPI, $route) {
+            return AlbumsAPI.getAlbum($route.current.params.id);
+          }
+        ]
+      }
+    });
 
-  $routeProvider.when("/orders", {
-    controller: "OrdersController",
-    templateUrl: "<%= asset_path './views/orders.html' %>"
-  });
+    $routeProvider.when("/orders", {
+      controller: "OrdersController",
+      templateUrl: "<%= asset_path './views/orders.html' %>"
+    });
 
-  $routeProvider.when("/sessions", {
-    controller: "SessionsController",
-    templateUrl: "<%= asset_path './views/sessions.html' %>"
-  });
+    $routeProvider.when("/sessions", {
+      controller: "SessionsController",
+      templateUrl: "<%= asset_path './views/sessions.html' %>"
+    });
 
-  $routeProvider.when("/cart", {
-    controller: "CartController",
-    templateUrl: "<%= asset_path './views/cart.html' %>"
-  });
+    $routeProvider.when("/cart", {
+      controller: "CartController",
+      templateUrl: "<%= asset_path './views/cart.html' %>"
+    });
 
-  $routeProvider.otherwise({
-    redirectTo: "/"
-  });
-});
+    $routeProvider.otherwise({
+      redirectTo: "/"
+    });
+  }
+]);
