@@ -1,6 +1,7 @@
 angular.module("app").service("SessionAPI", [
   "$http",
-  function($http) {
+  "$location",
+  function($http, $location) {
     var cart = {};
     var currentUser = null;
 
@@ -59,6 +60,7 @@ angular.module("app").service("SessionAPI", [
     this.logoff = function() {
       currentUser = null;
       sessionStorage.removeItem("user");
+      $location.path("/");
     };
 
     this.register = function(user, success, error) {
