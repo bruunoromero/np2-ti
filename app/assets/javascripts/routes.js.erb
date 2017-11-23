@@ -1,4 +1,4 @@
-angular.module("app").config(function($routeProvider, $locationProvider) {
+angular.module("app").config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.when("/", {
     controller: "HomeController",
     templateUrl: "<%= asset_path './views/index.html' %>",
