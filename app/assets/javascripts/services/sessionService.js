@@ -206,7 +206,7 @@ angular.module("app").service("SessionAPI", [
           })
           .then(function() {
             currentUser.cart = {};
-            success();
+            success ? success() : null;
             sessionStorage.setItem("user", JSON.stringify(currentUser));
           });
       } else {
